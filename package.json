@@ -1,11 +1,10 @@
 {
   "name": "exception-factory",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple exception factory",
   "license": "MIT",
   "main": "src/exceptionFactory.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Bizoon LLC",
   "repository": {
     "type": "git",
@@ -13,11 +12,9 @@
   },
   "keywords": [
     "exception",
-	"error",
-	"factory"
+    "error",
+    "factory"
   ],
-  "dependencies": {
-  },
-  "devDependencies": {
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
