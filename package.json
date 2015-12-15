@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Simple exception factory",
   "license": "MIT",
-  "main": "src/exception-factory",
+  "main": "src/exceptionFactory.js",
   "scripts": {
   },
   "author": "Bizoon LLC",
