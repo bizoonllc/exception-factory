@@ -1,15 +1,15 @@
 {
-  "name": "exceptionFactory",
-  "version": "0.0.1",
+  "name": "exception-factory",
+  "version": "1.0.0",
   "description": "Simple exception factory",
   "license": "MIT",
-  "main": "src/exceptionFactory",
+  "main": "src/exception-factory",
   "scripts": {
   },
   "author": "Bizoon LLC",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bizoonllc/exceptionFactory.git"
+    "url": "git://github.com/bizoonllc/exception-factory.git"
   },
   "keywords": [
     "exception",

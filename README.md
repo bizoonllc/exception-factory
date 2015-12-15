@@ -1,20 +1,20 @@
 
-# exceptionFactory
+# exception-factory
 [![License MIT][license]](https://opensource.org/licenses/MIT)
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][npm-url]
-[![Dependencies](https://david-dm.org/bizoonllc/exceptionFactory.svg)](https://david-dm.org/bizoonllc/exceptionFactory)
+[![Dependencies](https://david-dm.org/bizoonllc/exception-factory.svg)](https://david-dm.org/bizoonllc/exception-factory)
 
 Simple exception factory to create custom error objects.
 
 ## I. Installation
 
-`npm install exceptionFactory --save`
+`npm install exception-factory --save`
 
 Use it like this:
 
 ```
-var hooks = require('exceptionFactory');
+var exceptionFactory = require('exception-factory');
 
 var myException = new exceptionFactory('myException);
 
@@ -27,8 +27,8 @@ MIT
 
 
 
-[npm-url]: https://npmjs.org/package/exceptionFactory
-[npm-image]: https://img.shields.io/npm/v/exceptionFactory.svg
-[license]: https://img.shields.io/npm/l/exceptionFactory.svg
-[downloads-image]: https://img.shields.io/npm/dm/exceptionFactory.svg
+[npm-url]: https://npmjs.org/package/exception-factory
+[npm-image]: https://img.shields.io/npm/v/exception-factory.svg
+[license]: https://img.shields.io/npm/l/exception-factory.svg
+[downloads-image]: https://img.shields.io/npm/dm/exception-factory.svg
 
