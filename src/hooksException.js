@@ -17,4 +17,4 @@ function exceptionFactory (name) {
 	return newException;
 }
 
-module.exports = exceptionFactory;
+module.exports = new exceptionFactory('hooksException', 'hooks exception: ');
