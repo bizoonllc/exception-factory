@@ -16,9 +16,26 @@ Use it like this:
 ```
 var exceptionFactory = require('exception-factory');
 
-var myException = new exceptionFactory('myException);
+var myException = new exceptionFactory('myException');
 
 throw new myException('Oh no!');
+```
+
+or with Promise:
+
+```
+var validationException = new exceptionFactory('validationException');
+
+Promise.resolve(function(){
+   throw new validationException('Password is too short');
+})
+.catch(validationException, function(err){
+   console.log(err);
+   throw new err;
+})
+.catch(function(err){
+   throw new err;
+});
 ```
 
 ## License
