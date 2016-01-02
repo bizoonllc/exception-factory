@@ -31,10 +31,10 @@ Promise.resolve(function(){
 })
 .catch(validationException, function(err){
    console.log(err);
-   throw new err;
+   throw err;
 })
 .catch(function(err){
-   throw new err;
+   throw err;
 });
 ```
 

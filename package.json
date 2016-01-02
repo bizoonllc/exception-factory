@@ -1,6 +1,6 @@
 {
   "name": "exception-factory",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple exception factory",
   "license": "MIT",
   "main": "src/exceptionFactory.js",
