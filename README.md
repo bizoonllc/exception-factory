@@ -38,6 +38,18 @@ Promise.resolve(function(){
 });
 ```
 
+You can also define universal prefix of exception:
+
+```
+var validationException = new exceptionFactory('validationException', 'Validation exception: ');
+
+try {
+   throw new validationException('Password is too short');
+} catch (err) {
+   console.log(err); // Validation exception: Password is too short
+}
+```
+
 ## License
 
 MIT
