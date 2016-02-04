@@ -1,4 +1,5 @@
-function exceptionFactory (name) {
+var exceptionFactory = {};
+exceptionFactory.build = function (name) {
 	/*
 	 * PREFIX MESSAGE
 	 */

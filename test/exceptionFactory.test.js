@@ -13,7 +13,7 @@ describe('exception-factory', function () {
 
 	it('except custom exception to be thrown as valid error object with custom name set and extra code property attached', function () {
 
-		var myException = new exceptionFactory('myException');
+		var myException = exceptionFactory.build('myException');
 
 		try {
 
@@ -35,7 +35,7 @@ describe('exception-factory', function () {
 
 	it('except exception to be recognized by bluebird promise as a separate error type', function (done) {
 
-		var myException = new exceptionFactory('myException');
+		var myException = exceptionFactory.build('myException');
 
 		var isCatchedProperly;
 
@@ -61,7 +61,7 @@ describe('exception-factory', function () {
 
 	it('except exception to contain prefix text defined', function () {
 
-		var myException = new exceptionFactory('myException', 'Some prefix: ');
+		var myException = exceptionFactory.build('myException', 'Some prefix: ');
 
 		var newMyException = new myException('Some error');
 
@@ -71,7 +71,7 @@ describe('exception-factory', function () {
 
 	it('except to set valid error constants on exception', function () {
 
-		var myException = new exceptionFactory('myException');
+		var myException = exceptionFactory.build('myException');
 
 		myException.const('NOT_FOUND', '001');
 		myException.const('FATAL_ERROR', '002');
@@ -83,7 +83,7 @@ describe('exception-factory', function () {
 
 	it('except thrown exception to contain error code provided', function () {
 
-		var myException = new exceptionFactory('myException');
+		var myException = exceptionFactory.build('myException');
 
 		myException.const('NOT_FOUND', '001');
 		myException.const('FATAL_ERROR', '002');
@@ -104,7 +104,7 @@ describe('exception-factory', function () {
 
 	it('except to throw error when trying to set the same const on exception more than once', function () {
 
-		var myException = new exceptionFactory('myException');
+		var myException = exceptionFactory.build('myException');
 
 		myException.const('NOT_FOUND', '001');
 

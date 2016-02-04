@@ -15,7 +15,7 @@ Use it like this:
 
 ```
 var exceptionFactory = require('exception-factory');
-var customException = new exceptionFactory('customException');
+var customException = exceptionFactory.build('customException');
 
 customException.const('NOT_FOUND', '001');
 customException.const('FATAL_ERROR', '002');
@@ -32,8 +32,8 @@ try {
 or with Promise:
 
 ```
-var validationException = new exceptionFactory('validationException');
-var typeException = new exceptionFactory('typeException');
+var validationException = exceptionFactory.build('validationException');
+var typeException = exceptionFactory.build('typeException');
 
 Promise.resolve(function(){
    throw new validationException('Password is too short');
@@ -57,7 +57,7 @@ Promise.resolve(function(){
 You can also define universal prefix of exception:
 
 ```
-var validationException = new exceptionFactory('validationException', 'Validation exception: ');
+var validationException = exceptionFactory.build('validationException', 'Validation exception: ');
 
 try {
    throw new validationException('Password is too short');
