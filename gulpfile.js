@@ -1,8 +1,8 @@
 var gulp = require('gulp');
-var karma = require('karma').Server;
+var Server = require('karma').Server;
 
 gulp.task('test', function (done) {
-	new karma({
+	new Server({
 		configFile: __dirname + '/karma.conf.js',
 		singleRun: true
 	}, function (exitCode) {
@@ -12,7 +12,7 @@ gulp.task('test', function (done) {
 });
 
 gulp.task('tdd', function (done) {
-	new karma({
+	new Server({
 		configFile: __dirname + '/karma.conf.js'
 	}, function (exitCode) {
 		console.log('Karma has exited with ' + exitCode)

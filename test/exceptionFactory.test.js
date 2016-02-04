@@ -6,29 +6,14 @@ var exceptionFactory = require('../src/exceptionFactory');
 describe('exception-factory', function () {
 
 	beforeEach(function () {
-		var self = this;
 	});
 
 	afterEach(function () {
-		var self = this;
 	});
 
-	it('Expect exceptionFactory to not throw error when created new exception class', function () {
-		var self = this;
-
-		var fn = function () {
-			var myException = new exceptionFactory('myException');
-		};
-
-		expect(fn).to.not.throw(Error);
-	});
-
-	it('Expect created exception class to create valid error object with new myException name', function () {
-		var self = this;
+	it('except custom exception to be thrown as valid error object with custom name set and extra code property attached', function () {
 
 		var myException = new exceptionFactory('myException');
-
-		var myExceptionError;
 
 		try {
 
@@ -37,34 +22,35 @@ describe('exception-factory', function () {
 		} catch (err) {
 
 			expect(err.name).to.not.be.an('undefined');
+			expect(err.code).to.not.be.an('undefined');
 			expect(err.stack).to.not.be.an('undefined');
 			expect(err.message).to.not.be.an('undefined');
 
 			expect(err.name).to.be.equal('myException');
+			expect(err.code).to.be.equal(0);
 			expect(err.message).to.be.equal('Some error');
 
 		}
 	});
 
-	it('Expect myException created with exception-factory to be recognized by bluebird promise as a separate error type', function (done) {
-		var self = this;
+	it('except exception to be recognized by bluebird promise as a separate error type', function (done) {
 
 		var myException = new exceptionFactory('myException');
 
-		var catchedProperly;
+		var isCatchedProperly;
 
 		return Promise
 				.try(function () {
 					throw new myException('Some error');
 				})
 				.catch(myException, function (err) {
-					catchedProperly = true;
+					isCatchedProperly = true;
 				})
 				.catch(function (err) {
-					catchedProperly = false;
+					isCatchedProperly = false;
 				})
 				.then(function () {
-					expect(catchedProperly).to.be.equal(true);
+					expect(isCatchedProperly).to.be.equal(true);
 					done();
 				})
 				.catch(function (err) {
@@ -73,25 +59,59 @@ describe('exception-factory', function () {
 
 	});
 
-	it('Expect myException to contain prefix text defined', function () {
-		var self = this;
+	it('except exception to contain prefix text defined', function () {
 
 		var myException = new exceptionFactory('myException', 'Some prefix: ');
 
-		var myExceptionError = new myException('Some error');
+		var newMyException = new myException('Some error');
 
-		Promise
-				.try(function () {
-					throw new myException('Some error');
-				})
-				.catch(myException, function (err) {
-					catchedProperly = true;
-				})
-				.catch(function (err) {
-					catchedProperly = false;
-				});
+		expect(newMyException.message).to.be.equal('Some prefix: Some error');
 
-		expect(myExceptionError.message).to.be.equal('Some prefix: Some error');
+	});
+
+	it('except to set valid error constants on exception', function () {
+
+		var myException = new exceptionFactory('myException');
+
+		myException.const('NOT_FOUND', '001');
+		myException.const('FATAL_ERROR', '002');
+
+		expect(myException.NOT_FOUND).to.be.equal('001');
+		expect(myException.FATAL_ERROR).to.be.equal('002');
+
+	});
+
+	it('except thrown exception to contain error code provided', function () {
+
+		var myException = new exceptionFactory('myException');
+
+		myException.const('NOT_FOUND', '001');
+		myException.const('FATAL_ERROR', '002');
+
+		try {
+			throw new myException('Test1', myException.NOT_FOUND);
+		} catch (err) {
+			expect(err.code).to.be.equal(myException.NOT_FOUND)
+		}
+
+		try {
+			throw new myException('Test2', myException.FATAL_ERROR);
+		} catch (err) {
+			expect(err.code).to.be.equal(myException.FATAL_ERROR)
+		}
+
+	});
+
+	it('except to throw error when trying to set the same const on exception more than once', function () {
+
+		var myException = new exceptionFactory('myException');
+
+		myException.const('NOT_FOUND', '001');
+
+		expect(function () {
+			myException.const('NOT_FOUND', '001');
+		}).to.throw(Error);
+
 	});
 
 });

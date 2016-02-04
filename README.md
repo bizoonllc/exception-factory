@@ -5,7 +5,7 @@
 [![Downloads][downloads-image]][npm-url]
 [![Dependencies](https://david-dm.org/bizoonllc/exception-factory.svg)](https://david-dm.org/bizoonllc/exception-factory)
 
-Simple exception factory to create custom error objects.
+Simple powerful exception factory to create custom error objects, with error code (!), error constants and optional prefixes.
 
 ## I. Installation
 
@@ -15,25 +15,41 @@ Use it like this:
 
 ```
 var exceptionFactory = require('exception-factory');
+var customException = new exceptionFactory('customException');
 
-var myException = new exceptionFactory('myException');
+customException.const('NOT_FOUND', '001');
+customException.const('FATAL_ERROR', '002');
 
-throw new myException('Oh no!');
+try {
+	throw new customException('Oh no!', customException.FATAL_ERROR);
+} catch (err) {
+	console.log(err.name); // 'customException'
+	console.log(err.code); // '002'
+	console.log(err.message); // 'Oh no!'
+}
 ```
 
 or with Promise:
 
 ```
 var validationException = new exceptionFactory('validationException');
+var typeException = new exceptionFactory('typeException');
 
 Promise.resolve(function(){
    throw new validationException('Password is too short');
 })
 .catch(validationException, function(err){
+   // catched here!
+   console.log(err);
+   throw err;
+})
+.catch(typeException, function(err){
+   // not this time!
    console.log(err);
    throw err;
 })
 .catch(function(err){
+   // just for unexpected very vanilla errors!
    throw err;
 });
 ```

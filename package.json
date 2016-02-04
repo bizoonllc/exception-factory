@@ -1,6 +1,6 @@
 {
   "name": "exception-factory",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Simple exception factory",
   "license": "MIT",
   "main": "src/exceptionFactory.js",
@@ -15,7 +15,9 @@
     "error",
     "factory"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "karma-chrome-launcher": "^0.2.2"
+  },
   "devDependencies": {
     "bluebird": "^3.0.6",
     "brfs": "^1.4.1",
@@ -25,11 +27,9 @@
     "karma-browserify": "^4.4.2",
     "karma-chai": "^0.1.0",
     "karma-mocha": "^0.2.1",
-    "karma-phantomjs-launcher": "^0.2.1",
     "karma-sinon": "^1.0.4",
-    "mocha": "^2.3.4",
-    "phantomjs": "^1.9.19",
-    "sinon": "^1.17.2",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0"
   }
 }
