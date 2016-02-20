@@ -11,9 +11,9 @@ describe('exception-factory', function () {
 	afterEach(function () {
 	});
 
-	it('except custom exception to be thrown as valid error object with custom name set and extra code property attached', function () {
+	it('expect custom exception to be thrown as valid error object with custom name set and extra code property attached', function () {
 
-		var myException = exceptionFactory.build('myException');
+		var myException = require('../src/exceptionFactory').build('myException');
 
 		try {
 
@@ -33,7 +33,7 @@ describe('exception-factory', function () {
 		}
 	});
 
-	it('except exception to be recognized by bluebird promise as a separate error type', function (done) {
+	it('expect exception to be recognized by bluebird promise as a separate error type', function (done) {
 
 		var myException = exceptionFactory.build('myException');
 
@@ -59,7 +59,7 @@ describe('exception-factory', function () {
 
 	});
 
-	it('except exception to contain prefix text defined', function () {
+	it('expect exception to contain prefix text defined', function () {
 
 		var myException = exceptionFactory.build('myException', 'Some prefix: ');
 
@@ -69,7 +69,7 @@ describe('exception-factory', function () {
 
 	});
 
-	it('except to set valid error constants on exception', function () {
+	it('expect to set valid error constants on exception', function () {
 
 		var myException = exceptionFactory.build('myException');
 
@@ -81,7 +81,7 @@ describe('exception-factory', function () {
 
 	});
 
-	it('except thrown exception to contain error code provided', function () {
+	it('expect thrown exception to contain error code provided', function () {
 
 		var myException = exceptionFactory.build('myException');
 
@@ -102,7 +102,7 @@ describe('exception-factory', function () {
 
 	});
 
-	it('except to throw error when trying to set the same const on exception more than once', function () {
+	it('expect to throw error when trying to set the same const on exception more than once', function () {
 
 		var myException = exceptionFactory.build('myException');
 

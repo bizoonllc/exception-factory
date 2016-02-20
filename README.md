@@ -14,8 +14,7 @@ Simple powerful exception factory to create custom error objects, with error cod
 Use it like this:
 
 ```
-var exceptionFactory = require('exception-factory');
-var customException = exceptionFactory.build('customException');
+var customException = require('exception-factory').build('customException');
 
 customException.const('NOT_FOUND', '001');
 customException.const('FATAL_ERROR', '002');
@@ -32,8 +31,8 @@ try {
 or with Promise:
 
 ```
-var validationException = exceptionFactory.build('validationException');
-var typeException = exceptionFactory.build('typeException');
+var validationException = require('exception-factory').build('validationException');
+var typeException = require('exception-factory').build('typeException');
 
 Promise.resolve(function(){
    throw new validationException('Password is too short');
@@ -57,7 +56,7 @@ Promise.resolve(function(){
 You can also define universal prefix of exception:
 
 ```
-var validationException = exceptionFactory.build('validationException', 'Validation exception: ');
+var validationException = require('exception-factory').build('validationException', 'Validation exception: ');
 
 try {
    throw new validationException('Password is too short');
