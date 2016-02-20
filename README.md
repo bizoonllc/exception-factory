@@ -20,11 +20,11 @@ customException.const('NOT_FOUND', '001');
 customException.const('FATAL_ERROR', '002');
 
 try {
-	throw new customException('Oh no!', customException.FATAL_ERROR);
+   throw new customException('Oh no!', customException.FATAL_ERROR);
 } catch (err) {
-	console.log(err.name); // 'customException'
-	console.log(err.code); // '002'
-	console.log(err.message); // 'Oh no!'
+   console.log(err.name); // 'customException'
+   console.log(err.code); // '002'
+   console.log(err.message); // 'Oh no!'
 }
 ```
 
