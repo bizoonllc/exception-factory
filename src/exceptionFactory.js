@@ -29,7 +29,7 @@ exceptionFactory.build = function (name) {
 	/*
 	 * NAME OF NEW EXCEPTION
 	 */
-	newException.name = name;
+	newException.name = newException.$name = name;
 	/*
 	 * PROTOTYPE OF NEW EXCEPTION
 	 */
