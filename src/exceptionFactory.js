@@ -58,6 +58,7 @@ exceptionFactory.build = function (name) {
 				value: value,
 			});
 		}
+		return newException;
 	};
 	return newException;
 }
